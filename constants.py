@@ -84,7 +84,6 @@ sigma = 5.67e-8                                 # Stefan-Bolzmann constant [W m-
 zero_temperature = 273.16                       # Melting temperature [K]
 surface_emission_coeff = 0.99                   # surface emission coefficient [-]
 
-
 ' INITIAL CONDITIONS '
 first_layer_height = 0.05                       # The first layer will always have the defined height (m)
 initial_glacier_layer_heights = 0.05             # Initial thickness of glacier ice layers
@@ -150,4 +149,4 @@ albedo_ice = 0.25                                 # albedo of ice from Balasubra
 ice_emission_coeff = 0.97                   # surface emission coefficient [-]
 snow_emission_coeff = 0.99                   # surface emission coefficient [-]
 albedo_mod_snow_aging = 16                      # effect of ageing on snow albedo [days] (Moelg et al. 2012, TC)
-
+make_alt_corr = True

@@ -19,9 +19,10 @@ from metpy.units import units
 
 sys.path.append('../../')
 
-from constants import make_icestupa
-from config import time_start, time_end, icestupa_name, plat, plon, hgt, stationAlt, timezone_lon, cld
+from constants import make_icestupa, make_alt_corr, sigma, zero_temperature
+from config import time_start, time_end, icestupa_name, plat, plon, hgt, stationAlt, timezone_lon, cld, lapse_rate
 from utilities.aws2cosipy.aws2cosipyConfig import *
+from utilities.misc.helper_funcs import alt2pres
 from cosipy.modules.radCor import *
 
 import argparse
@@ -91,6 +92,20 @@ def create_1D_input(cs_file, cosipy_file, static_file, start_date, end_date):
             hour = df.index[t].hour
             Rg = df.SW_global[df.index[t]]
             df.loc[df.index[t], 'beta'], _, _ = solarFParallel(plat, plon, timezone_lon, doy, hour)
+
+        if make_alt_corr: 
+            alt = 4109
+            # alt = hgt
+            print('\n Run the Altitude Correction from %i to %i \n' %(hgt,alt) )
+            for t in range(len(df.index)):
+                df.loc[df.index[t], 'temp'] -= (alt - hgt) * lapse_rate
+                df.loc[df.index[t], 'Discharge'] = 60
+                df.loc[df.index[t], 'press'] = alt2pres(alt) / 100
+                df.loc[df.index[t], 'ppt'] = 0
+                vp_a = np.exp(34.494 - 4924.99/ (df.loc[df.index[t], 'temp'] + 237.1))/(math.pow((df.loc[df.index[t], 'temp'] + 105),1.57) * 100)
+                vp_a *= df.loc[df.index[t], 'RH']/100
+                e_a = (1.24 * math.pow(abs(vp_a/ (df.loc[df.index[t], 'temp'] + zero_temperature)), 1 / 7)) # Assuming clear skies
+                df.loc[df.index[t], 'LW_in'] = e_a * sigma * math.pow(df.loc[df.index[t], 'temp'] + zero_temperature, 4)
 
     print(df.head())
 

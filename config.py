@@ -11,10 +11,10 @@
 # time_end   = '2009-01-10T00:00'
 
 all_icestupas = ['guttannen22_scheduled', 'guttannen22_unscheduled', 'guttannen21', 'gangles21']
-icestupa_name = 'guttannen22_unscheduled'
+# icestupa_name = 'guttannen22_unscheduled'
 # icestupa_name = 'guttannen21'
 # icestupa_name = 'guttannen20'
-# icestupa_name = 'gangles21'
+icestupa_name = 'gangles21'
 
 if icestupa_name in ['guttannen20', 'guttannen21', 'guttannen22_scheduled', 'guttannen22_unscheduled']:
     plon = 8.29
@@ -35,6 +35,8 @@ if icestupa_name in ['gangles21']:
     stationAlt = hgt
     stationLat = plat
     timezone_lon = plon
+    lapse_rate = 0.0065                             # from Oerlemans22 [K m^(-1)]
+
 
 if icestupa_name == 'guttannen20':
     drone_evaluation = True
