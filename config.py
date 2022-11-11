@@ -35,7 +35,6 @@ if icestupa_name in ['gangles21']:
     stationAlt = hgt
     stationLat = plat
     timezone_lon = plon
-    lapse_rate = 0.0065                             # from Oerlemans22 [K m^(-1)]
 
 
 if icestupa_name == 'guttannen20':

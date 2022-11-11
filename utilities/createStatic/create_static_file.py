@@ -14,17 +14,24 @@ tile = True
 aggregate = True
 
 ### input digital elevation model (DEM)
-dem_path_tif = static_folder + 'DEM/n30_e090_3arc_v2.tif'
+# dem_path_tif = static_folder + 'DEM/n30_e090_3arc_v2.tif'
+dem_path_tif = static_folder + 'DEM/ASTGTMV003_N34E077_dem.tif'
 ### input shape of glacier or study area, e.g. from the Randolph glacier inventory
-shape_path = static_folder + 'Shapefiles/Zhadang_RGI6.shp'
+# shape_path = static_folder + 'Shapefiles/Zhadang_RGI6.shp'
+shape_path = static_folder + 'Shapefiles/LEH_GLACIERS_2019.shp'
 ### path were the static.nc file is saved
-output_path = static_folder + 'Zhadang_static.nc'
+# output_path = static_folder + 'Zhadang_static.nc'
+output_path = static_folder + 'Leh.nc'
 
 ### to shrink the DEM use the following lat/lon corners
-longitude_upper_left = '90.62'
-latitude_upper_left = '30.48'
-longitude_lower_right = '90.66'
-latitude_lower_right = '30.46'
+# longitude_upper_left = '90.62'
+# latitude_upper_left = '30.48'
+# longitude_lower_right = '90.66'
+# latitude_lower_right = '30.46'
+longitude_upper_left = '77.16'
+latitude_upper_left = '33.78'
+longitude_lower_right = '78.10'
+latitude_lower_right = '34.35'
 
 ### to aggregate the DEM to a coarser spatial resolution
 aggregate_degree = '0.003'
