@@ -863,7 +863,7 @@ class IOClass:
     #==============================================================================
     def add_variable_along_scalar(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = var
+        ds[name] = var.data
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -871,7 +871,7 @@ class IOClass:
 
     def add_variable_along_latlon(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = ((northing,easting), var)
+        ds[name] = ((northing,easting), var.data)
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -879,7 +879,7 @@ class IOClass:
     
     def add_variable_along_time(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = xr.DataArray(var, coords=[('time', ds.time)])
+        ds[name] = xr.DataArray(var.data, coords=[('time', ds.time)])
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -887,7 +887,7 @@ class IOClass:
     
     def add_variable_along_latlontime(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = (('time',northing,easting), var)
+        ds[name] = (('time',northing,easting), var.data)
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -895,7 +895,7 @@ class IOClass:
     
     def add_variable_along_latlonlayertime(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = (('time',northing,easting,'layer'), var)
+        ds[name] = (('time',northing,easting,'layer'), var.data)
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -903,7 +903,7 @@ class IOClass:
     
     def add_variable_along_latlonlayer(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = ((northing,easting,'layer'), var)
+        ds[name] = ((northing,easting,'layer'), var.data)
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -911,7 +911,7 @@ class IOClass:
     
     def add_variable_along_layertime(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = (('time','layer'), var)
+        ds[name] = (('time','layer'), var.data)
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
@@ -919,7 +919,7 @@ class IOClass:
     
     def add_variable_along_layer(self, ds, var, name, units, long_name):
         """ This function self.adds missing variables to the self.DATA class """
-        ds[name] = (('layer'), var)
+        ds[name] = (('layer'), var.data)
         ds[name].attrs['units'] = units
         ds[name].attrs['long_name'] = long_name
         ds[name].encoding['_FillValue'] = -9999
