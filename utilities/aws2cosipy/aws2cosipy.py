@@ -181,8 +181,8 @@ def create_1D_input(cs_file, cosipy_file, static_file, start_date, end_date):
     PRES = SLP * np.power((1 - (0.0065 * hgt)/(288.15)), 5.22)                                  # Pressure
 
     if make_icestupa :
-        DISCHARGE = df[DISCHARGE_var].values                                                                        # Incoming shortwave radiation
-        BETA = df['beta'].values                                                                        # Incoming shortwave radiation
+        DISCHARGE = df[DISCHARGE_var].values                                                     
+        BETA = df['beta'].values                                                                
         # FDIF = df['Fdif'].values                                                                        # Incoming shortwave radiation
 
     if (RRR_var in df):
@@ -235,7 +235,7 @@ def create_1D_input(cs_file, cosipy_file, static_file, start_date, end_date):
     add_variable_along_timelatlon_point(ds, PRES, 'PRES', 'hPa', 'Atmospheric Pressure')
     
     if make_icestupa :
-        add_variable_along_timelatlon_point(ds, DISCHARGE, 'DISCHARGE', 'm', 'Discharge rate')
+        add_variable_along_timelatlon_point(ds, DISCHARGE, 'DISCHARGE', 'l min\u207b\xb9', 'Discharge rate')
         add_variable_along_timelatlon_point(ds, BETA, 'BETA', 'radians', 'Solar elevation angle')
         # add_variable_along_timelatlon_point(ds, FDIF, 'FDIF', 'degrees', 'Diffuse fraction')
 

@@ -100,6 +100,10 @@ zlt2 = 0  					                    # Second depth for temperature interpolation 
 initial_top_density_snowpack = 300.0            # Top density for initial snowpack
 initial_bottom_density_snowpack = 600.0         # Bottom density for initial snowpack
 
+if icestupa_name == 'altiplano20':
+    initial_snowheight_constant = 0.00             # Initial snowheight
+    initial_glacier_height = 0.01                  # Initial glacier height without snowlayers
+    Tf = 0 + 273.16                                # Water temperature [C]
 
 if icestupa_name == 'guttannen22_scheduled':
     initial_snowheight_constant = 0.435              # Initial snowheight

@@ -11,7 +11,8 @@
 # time_end   = '2009-01-10T00:00'
 
 all_icestupas = ['guttannen22_scheduled', 'guttannen22_unscheduled', 'guttannen21', 'gangles21']
-icestupa_name = 'guttannen22_unscheduled'
+icestupa_name = 'altiplano20'
+# icestupa_name = 'guttannen22_unscheduled'
 # icestupa_name = 'guttannen21'
 # icestupa_name = 'guttannen20'
 # icestupa_name = 'gangles21'
@@ -77,6 +78,21 @@ if icestupa_name == 'gangles21':
 
     # radf = 10.22                                       # Spray radius [m]
 
+if icestupa_name == 'altiplano20':
+    plat = -17.14375
+    plon = -69.997917
+    hgt = 4432
+    cld = 0.5  # Cloudiness factor
+    stationName = icestupa_name
+    stationAlt = hgt
+    stationLat = plat
+    timezone_lon = plon
+    drone_evaluation = False
+    thermistor_evaluation = False
+    time_start = '2019-04-26'
+    time_end   = '2020-04-25'
+
+    # radf = 10.22                                       # Spray radius [m]
 
 # Hintereisferner
 #time_start = '2018-09-17T08:00'
@@ -121,14 +137,20 @@ eval_method = 'rmse'                                        # how to evaluate th
 if drone_evaluation:
     observations_data_file = './data/input/' + icestupa_name + '/drone.csv'   # path to stake data file
     obs_type = 'volume'
+else:
+    obs_type = 'none'
 
 if thermistor_evaluation:
     observations_data_file = './data/input/' + icestupa_name + '/thermistor.csv'   # path to stake data file
     obs_type = 'bulkTemp'
+else:
+    obs_type = 'none'
 
 if thermalcam_evaluation:
     observations_data_file = './data/input/' + icestupa_name + '/thermalcam.csv'   # path to stake data file
     obs_type = 'surfTemp'
+else:
+    obs_type = 'none'
 
 #-----------------------------------
 # STANDARD LAT/LON or WRF INPUT 

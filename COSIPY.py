@@ -201,7 +201,7 @@ def run_cosipy(cluster, IO, DATA, RESULT, RESTART, futures):
                     index = np.unravel_index(index[1], lats.shape)
                 stakes_list.append((index[0][0], index[1][0], row['id']))
 
-        elif make_icestupa is True:
+        elif make_icestupa is True and obs_type != 'none':
             stake_names = obs_type
             df_stakes_data = pd.read_csv(observations_data_file, delimiter=',', index_col='TIMESTAMP', na_values='-9999')
             df_stakes_data = df_stakes_data[[stake_names]]
@@ -213,6 +213,8 @@ def run_cosipy(cluster, IO, DATA, RESULT, RESTART, futures):
         else:
             stakes_loc = None
             df_stakes_data = None
+            stake_names = 'none'
+            observations_data_file = 'none'
 
         # Distribute data and model to workers
         start_res = datetime.now()
