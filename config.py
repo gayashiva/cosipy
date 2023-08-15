@@ -82,7 +82,7 @@ if icestupa_name == 'altiplano20':
     plat = -17.14375
     plon = -69.997917
     hgt = 4432
-    cld = 0.5  # Cloudiness factor
+    cld = 0.1  # Cloudiness factor
     stationName = icestupa_name
     stationAlt = hgt
     stationLat = plat
