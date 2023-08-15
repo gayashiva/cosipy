@@ -88,7 +88,7 @@ if icestupa_name == 'altiplano20':
     stationLat = plat
     timezone_lon = plon
     drone_evaluation = False
-    thermistor_evaluation = False
+    stake_evaluation = True
     time_start = '2019-07-18'
     time_end   = '2020-07-17'
 
@@ -141,19 +141,19 @@ else:
     observations_data_file = None
     obs_type = None
 
-if thermistor_evaluation:
-    observations_data_file = './data/input/' + icestupa_name + '/thermistor.csv'   # path to stake data file
-    obs_type = 'bulkTemp'
-else:
-    observations_data_file = None
-    obs_type = None
+# if thermistor_evaluation:
+#     observations_data_file = './data/input/' + icestupa_name + '/thermistor.csv'   # path to stake data file
+#     obs_type = 'bulkTemp'
+# else:
+#     observations_data_file = None
+#     obs_type = None
 
-if thermalcam_evaluation:
-    observations_data_file = './data/input/' + icestupa_name + '/thermalcam.csv'   # path to stake data file
-    obs_type = 'surfTemp'
-else:
-    observations_data_file = None
-    obs_type = None
+# if thermalcam_evaluation:
+#     observations_data_file = './data/input/' + icestupa_name + '/thermalcam.csv'   # path to stake data file
+#     obs_type = 'surfTemp'
+# else:
+#     observations_data_file = None
+#     obs_type = None
 
 #-----------------------------------
 # STANDARD LAT/LON or WRF INPUT 

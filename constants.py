@@ -101,9 +101,9 @@ initial_top_density_snowpack = 300.0            # Top density for initial snowpa
 initial_bottom_density_snowpack = 600.0         # Bottom density for initial snowpack
 
 if icestupa_name == 'altiplano20':
-    # remesh_method = 'log_profile'                   # Remeshing (log_profile or adaptive_profile)
+    remesh_method = 'log_profile'                   # Remeshing (log_profile or adaptive_profile)
     initial_snowheight_constant = 0.00             # Initial snowheight
-    initial_glacier_height = 0.5                  # Initial glacier height without snowlayers
+    initial_glacier_height = 0.1                  # Initial glacier height without snowlayers
     Tf = 0 + 273.16                                # Water temperature [C]
 
 if icestupa_name == 'guttannen22_scheduled':
