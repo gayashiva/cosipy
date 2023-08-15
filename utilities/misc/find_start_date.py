@@ -18,9 +18,10 @@ daily_min_temps = df1['temp'].resample('D').min()
 longest_period = 0
 current_period = 0
 start_date = None
+crit_temp = -3
 
 for date, temp in daily_min_temps.iteritems():
-    if temp < 0:
+    if temp < crit_temp:
         current_period += 1
         if current_period > longest_period:
             longest_period = current_period

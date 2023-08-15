@@ -89,8 +89,8 @@ if icestupa_name == 'altiplano20':
     timezone_lon = plon
     drone_evaluation = False
     thermistor_evaluation = False
-    time_start = '2019-04-26'
-    time_end   = '2020-04-25'
+    time_start = '2019-07-18'
+    time_end   = '2020-07-17'
 
     # radf = 10.22                                       # Spray radius [m]
 
@@ -138,19 +138,22 @@ if drone_evaluation:
     observations_data_file = './data/input/' + icestupa_name + '/drone.csv'   # path to stake data file
     obs_type = 'volume'
 else:
-    obs_type = 'none'
+    observations_data_file = None
+    obs_type = None
 
 if thermistor_evaluation:
     observations_data_file = './data/input/' + icestupa_name + '/thermistor.csv'   # path to stake data file
     obs_type = 'bulkTemp'
 else:
-    obs_type = 'none'
+    observations_data_file = None
+    obs_type = None
 
 if thermalcam_evaluation:
     observations_data_file = './data/input/' + icestupa_name + '/thermalcam.csv'   # path to stake data file
     obs_type = 'surfTemp'
 else:
-    obs_type = 'none'
+    observations_data_file = None
+    obs_type = None
 
 #-----------------------------------
 # STANDARD LAT/LON or WRF INPUT 

@@ -62,18 +62,21 @@ def init_snowpack(DATA):
         layer_densities = np.ones(nlayers)*ice_density
         layer_T = np.array([temperature_top-dT*initial_glacier_layer_heights*i for i in range(1,nlayers+1)])
         layer_liquid_water = np.zeros(nlayers)
-	
-    # Determine spray radius from drone measurements
-    df_c = pd.read_csv(
-        observations_data_file,
-        sep=",",
-        header=0,
-        parse_dates=["TIMESTAMP"],
-    )
-    df_c['cond'] = (df_c['rad'] - df_c.shift(1)['rad']>0) | (df_c['volume'] - df_c.shift(1)['volume']>0)
-    rad_flights = df_c.loc[df_c['cond'].values > 0 , "rad"].values
-    r_cone = np.mean(rad_flights)
-    print("\n Measured spray radius from drone %0.1f using %i measurements" % (r_cone, len(rad_flights)))
+    if observations_data_file != None:
+        # Determine spray radius from drone measurements
+        df_c = pd.read_csv(
+            observations_data_file,
+            sep=",",
+            header=0,
+            parse_dates=["TIMESTAMP"],
+        )
+        df_c['cond'] = (df_c['rad'] - df_c.shift(1)['rad']>0) | (df_c['volume'] - df_c.shift(1)['volume']>0)
+        rad_flights = df_c.loc[df_c['cond'].values > 0 , "rad"].values
+        r_cone = np.mean(rad_flights)
+        print("\n Measured spray radius from drone %0.1f using %i measurements" % (r_cone, len(rad_flights)))
+    else:
+        r_cone=10
+        print("\n Default spray radius %0.1f " % (r_cone))
 
     h_cone = initial_glacier_height + initial_snowheight
 
